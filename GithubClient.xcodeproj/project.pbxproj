@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		11D3FB5123369DFF004145F5 /* RepositoryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11D3FB5023369DFF004145F5 /* RepositoryCollectionViewCell.xib */; };
+		11D3FB532336A54C004145F5 /* RepositoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D3FB522336A54C004145F5 /* RepositoryCollectionViewCell.swift */; };
+		11D3FB562336A722004145F5 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D3FB552336A722004145F5 /* UIView+.swift */; };
 		11FDD96E2336983300F29842 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FDD96D2336983300F29842 /* AppDelegate.swift */; };
 		11FDD9702336983300F29842 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FDD96F2336983300F29842 /* ViewController.swift */; };
 		11FDD9732336983300F29842 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11FDD9712336983300F29842 /* Main.storyboard */; };
@@ -37,6 +40,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		11D3FB5023369DFF004145F5 /* RepositoryCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RepositoryCollectionViewCell.xib; sourceTree = "<group>"; };
+		11D3FB522336A54C004145F5 /* RepositoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryCollectionViewCell.swift; sourceTree = "<group>"; };
+		11D3FB552336A722004145F5 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		11FDD96A2336983300F29842 /* GithubClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GithubClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		11FDD96D2336983300F29842 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		11FDD96F2336983300F29842 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -82,6 +88,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		11D3FB4F23369DD4004145F5 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				11D3FB5023369DFF004145F5 /* RepositoryCollectionViewCell.xib */,
+				11D3FB522336A54C004145F5 /* RepositoryCollectionViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		11D3FB542336A6BA004145F5 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				11D3FB552336A722004145F5 /* UIView+.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		11FDD9612336983300F29842 = {
 			isa = PBXGroup;
 			children = (
@@ -107,6 +130,8 @@
 			isa = PBXGroup;
 			children = (
 				11FDD96D2336983300F29842 /* AppDelegate.swift */,
+				11D3FB542336A6BA004145F5 /* Extensions */,
+				11D3FB4F23369DD4004145F5 /* Views */,
 				11FDD96F2336983300F29842 /* ViewController.swift */,
 				11FDD9712336983300F29842 /* Main.storyboard */,
 				11FDD9772336983600F29842 /* Assets.xcassets */,
@@ -250,6 +275,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				11FDD97B2336983600F29842 /* LaunchScreen.storyboard in Resources */,
+				11D3FB5123369DFF004145F5 /* RepositoryCollectionViewCell.xib in Resources */,
 				11FDD9782336983600F29842 /* Assets.xcassets in Resources */,
 				11FDD9732336983300F29842 /* Main.storyboard in Resources */,
 			);
@@ -298,9 +324,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11D3FB532336A54C004145F5 /* RepositoryCollectionViewCell.swift in Sources */,
 				11FDD9702336983300F29842 /* ViewController.swift in Sources */,
 				11FDD9762336983300F29842 /* GithubClient.xcdatamodeld in Sources */,
 				11FDD96E2336983300F29842 /* AppDelegate.swift in Sources */,
+				11D3FB562336A722004145F5 /* UIView+.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
