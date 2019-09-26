@@ -10,21 +10,51 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--search Repo-->
+        <!--Search Repository-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="GithubClient" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="RepositorySearchViewController" customModule="GithubClient" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" placeholder="user name, repository name" translatesAutoresizingMaskIntoConstraints="NO" id="cSf-HS-lDK">
+                                <rect key="frame" x="0.0" y="88" width="414" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="0Ic-uU-Nbh">
+                                <rect key="frame" x="0.0" y="144" width="414" height="669"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="EzU-Qu-yQ0">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="0Ic-uU-Nbh" secondAttribute="bottom" id="3RR-gt-AFO"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="0Ic-uU-Nbh" secondAttribute="trailing" id="Hy5-oe-qaS"/>
+                            <constraint firstItem="cSf-HS-lDK" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="ZGu-VJ-ZpK"/>
+                            <constraint firstItem="cSf-HS-lDK" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="hoO-rW-IFi"/>
+                            <constraint firstItem="0Ic-uU-Nbh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="lYd-BW-LKT"/>
+                            <constraint firstItem="cSf-HS-lDK" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="ml5-h8-lY4"/>
+                            <constraint firstItem="0Ic-uU-Nbh" firstAttribute="top" secondItem="cSf-HS-lDK" secondAttribute="bottom" id="uS3-Fy-Qwp"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="search Repo" id="oRJ-Xn-1kR"/>
+                    <navigationItem key="navigationItem" title="Search Repository" id="oRJ-Xn-1kR"/>
+                    <connections>
+                        <outlet property="repositoryCollectionView" destination="0Ic-uU-Nbh" id="YHj-Kj-6wd"/>
+                        <outlet property="searchBar" destination="cSf-HS-lDK" id="G5D-ah-IVm"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1946" y="-171"/>
+            <point key="canvasLocation" x="1655" y="-175"/>
         </scene>
         <!--favorites-->
         <scene sceneID="L6B-pN-ZbE">
