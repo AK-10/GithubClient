@@ -25,4 +25,8 @@ class RepositoryCollectionViewCell: UICollectionViewCell {
         languageColorView.backgroundColor = .white
     }
     
+    func setup(repoistory: Repository) {
+        
+    }
+    
 }
