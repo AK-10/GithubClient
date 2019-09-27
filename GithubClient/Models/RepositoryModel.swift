@@ -7,10 +7,27 @@
 //
 
 import Foundation
+import Alamofire
+import RxSwift
 
 class RepositoryModel: ModelProtocol {
-    func search(query: String) -> [Repository] {
-        return Repository.dummyDatas
+    
+    func search(query: String) -> Single<[Repository]> {
+        return Single<[Repository]>.create { singleEvent in
+            let request = AF.request(Router.search(query: query)).responseJSON(completionHandler: { (res) in
+                print(query)
+                print(res.result)
+                switch res.result {
+                case .success(let value):
+                    print(value)
+                    singleEvent(.success(Repository.dummyDatas))
+                case .failure(let err):
+                    singleEvent(.error(err))
+                }
+            })
+            return Disposables.create { request.cancel() }
+        }
+
     }
     
     func favorite() {

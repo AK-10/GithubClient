@@ -24,7 +24,7 @@ class RepositorySearchViewController: UIViewController {
         
         repositoryCollectionView.register(UINib(nibName: "RepositoryCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "RepoCell")
         viewModel.resultRepositories.asObservable().bind(to: repositoryCollectionView.rx.items(cellIdentifier: "RepoCell", cellType: RepositoryCollectionViewCell.self)) { row, element, cell in
-            cell.setup(repoistory: element)
+            cell.setup(repository: element)
         }
         .disposed(by: disposeBag)
     }

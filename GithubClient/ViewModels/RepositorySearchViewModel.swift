@@ -17,15 +17,22 @@ class RepositorySearchViewModel {
     private let disposeBag = DisposeBag()
     
     init(searchWordObservable: Observable<String?>, model: ModelProtocol) {
-        searchWordObservable.subscribe{ [weak self] event in
+        searchWordObservable.subscribe { [weak self] event in
             switch event {
             case .next(let word):
                 guard let query = word else { return }
-                self?.resultRepositories.accept(model.search(query: query))
+                _ = model.search(query: query).subscribe{ [weak self] event in
+                    switch event {
+                    case .success(let repositories):
+                        self?.resultRepositories.accept(repositories)
+                    case .error(let error):
+                        print(error)
+                    }
+                }
             default:
                 break
             }
-        }.disposed(by: disposeBag)
+        }
     }
     
 }

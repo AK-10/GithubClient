@@ -12,6 +12,8 @@
 		111F50E62338B30D00A45195 /* ModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 111F50E52338B30D00A45195 /* ModelProtocol.swift */; };
 		111F50E82338BA6200A45195 /* RxRelay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 111F50E72338BA6200A45195 /* RxRelay.framework */; };
 		111F50EA2338BAF900A45195 /* RepositoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 111F50E92338BAF900A45195 /* RepositoryModel.swift */; };
+		11BD548D233E994B0022E0DA /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BD548C233E994B0022E0DA /* Router.swift */; };
+		11BD548F233E99820022E0DA /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11BD548E233E99820022E0DA /* Alamofire.framework */; };
 		11D3FB5123369DFF004145F5 /* RepositoryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11D3FB5023369DFF004145F5 /* RepositoryCollectionViewCell.xib */; };
 		11D3FB532336A54C004145F5 /* RepositoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D3FB522336A54C004145F5 /* RepositoryCollectionViewCell.swift */; };
 		11D3FB562336A722004145F5 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D3FB552336A722004145F5 /* UIView+.swift */; };
@@ -50,6 +52,8 @@
 		111F50E52338B30D00A45195 /* ModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelProtocol.swift; sourceTree = "<group>"; };
 		111F50E72338BA6200A45195 /* RxRelay.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxRelay.framework; path = Carthage/Build/iOS/RxRelay.framework; sourceTree = "<group>"; };
 		111F50E92338BAF900A45195 /* RepositoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryModel.swift; sourceTree = "<group>"; };
+		11BD548C233E994B0022E0DA /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		11BD548E233E99820022E0DA /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		11D3FB5023369DFF004145F5 /* RepositoryCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RepositoryCollectionViewCell.xib; sourceTree = "<group>"; };
 		11D3FB522336A54C004145F5 /* RepositoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		11D3FB552336A722004145F5 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
@@ -76,6 +80,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11BD548F233E99820022E0DA /* Alamofire.framework in Frameworks */,
 				111F50E82338BA6200A45195 /* RxRelay.framework in Frameworks */,
 				11FDD9A323369A8800F29842 /* RxCocoa.framework in Frameworks */,
 				11FDD9A02336995C00F29842 /* RxSwift.framework in Frameworks */,
@@ -155,6 +160,14 @@
 			path = Entities;
 			sourceTree = "<group>";
 		};
+		11BD548B233E98EE0022E0DA /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				11BD548C233E994B0022E0DA /* Router.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		11D3FB4F23369DD4004145F5 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -198,6 +211,7 @@
 		11FDD96C2336983300F29842 /* GithubClient */ = {
 			isa = PBXGroup;
 			children = (
+				11BD548B233E98EE0022E0DA /* Utils */,
 				111F50E22338B1DB00A45195 /* Entities */,
 				111F50DB2338AEB500A45195 /* Models */,
 				111F50DA2338AEA700A45195 /* ViewModels */,
@@ -234,6 +248,7 @@
 		11FDD99E2336995B00F29842 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				11BD548E233E99820022E0DA /* Alamofire.framework */,
 				111F50E72338BA6200A45195 /* RxRelay.framework */,
 				11FDD9A223369A8800F29842 /* RxCocoa.framework */,
 				11FDD99F2336995C00F29842 /* RxSwift.framework */,
@@ -381,6 +396,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/RxSwift.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxCocoa.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxRelay.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
 			);
 			outputFileListPaths = (
 			);
@@ -399,6 +415,7 @@
 			files = (
 				11D3FB532336A54C004145F5 /* RepositoryCollectionViewCell.swift in Sources */,
 				11FDD9702336983300F29842 /* RepositorySearchViewController.swift in Sources */,
+				11BD548D233E994B0022E0DA /* Router.swift in Sources */,
 				11FDD9762336983300F29842 /* GithubClient.xcdatamodeld in Sources */,
 				111F50EA2338BAF900A45195 /* RepositoryModel.swift in Sources */,
 				111F50E12338B16200A45195 /* RepositorySearchViewModel.swift in Sources */,

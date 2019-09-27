@@ -7,9 +7,9 @@
 //
 
 import Foundation
-import RxRelay
+import RxSwift
 
 protocol ModelProtocol {
-    func search(query: String) -> [Repository]
+    func search(query: String) -> Single<[Repository]>
     func favorite()
 }

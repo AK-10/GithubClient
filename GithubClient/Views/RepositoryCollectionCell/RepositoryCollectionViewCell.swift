@@ -16,17 +16,20 @@ class RepositoryCollectionViewCell: UICollectionViewCell {
     @IBOutlet private weak var starNumLabel: UILabel!
     @IBOutlet private weak var languageColorView: UIView!
     
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        repositoryLabel.text = ""
-        descriptionLabel.text = ""
-        languageLabel.text = ""
-        starNumLabel.text = ""
-        languageColorView.backgroundColor = .white
-    }
+//    override func prepareForReuse() {
+//        super.prepareForReuse()
+//        repositoryLabel.text = ""
+//        descriptionLabel.text = ""
+//        languageLabel.text = ""
+//        starNumLabel.text = ""
+//        languageColorView.backgroundColor = .white
+//    }
     
-    func setup(repoistory: Repository) {
-        
+    func setup(repository: Repository) {
+        repositoryLabel.text = repository.repositoryName
+        descriptionLabel.text = repository.description
+        languageLabel.text = repository.language
+        starNumLabel.text = repository.starNum
     }
     
 }

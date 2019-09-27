@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Repository {
+struct Repository: Codable {
     let repositoryName: String
     let userName: String
     let language: String
@@ -23,6 +23,5 @@ struct Repository {
         Repository(repositoryName: "tanaka", userName: "yamada", language: "Swift", description: "this is dummy repository", starNum: "1000", url: URL(string: "https://github.com")!),
         Repository(repositoryName: "tanaka", userName: "yamada", language: "Swift", description: "this is dummy repository", starNum: "1000", url: URL(string: "https://github.com")!),
         Repository(repositoryName: "tanaka", userName: "yamada", language: "Swift", description: "this is dummy repository", starNum: "1000", url: URL(string: "https://github.com")!),
-        
         ]
 }
