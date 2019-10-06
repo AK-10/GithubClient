@@ -13,14 +13,21 @@ import RxSwift
 class RepositoryModel: ModelProtocol {
     
     func search(query: String) -> Single<[Repository]> {
+        print(query)
         return Single<[Repository]>.create { singleEvent in
             let request = AF.request(Router.search(query: query)).responseJSON(completionHandler: { (res) in
                 print(query)
-                print(res.result)
+                print("result: \(res.result)")
                 switch res.result {
-                case .success(let value):
-                    print(value)
-                    singleEvent(.success(Repository.dummyDatas))
+                case .success:
+                    do {
+                        let responseItem = try JSONDecoder().decode(SearchRepositoriesResponse.self, from: res.data!)
+                        singleEvent(.success(responseItem.items))
+
+                    } catch let e {
+                        print(e)
+                        singleEvent(.error(e))
+                    }
                 case .failure(let err):
                     singleEvent(.error(err))
                 }

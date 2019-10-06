@@ -10,6 +10,7 @@ import Foundation
 import Alamofire
 
 enum Router: URLRequestConvertible {
+    
     private static let baseURL = "https://api.github.com"
     
     case search(query: String)
@@ -25,20 +26,27 @@ enum Router: URLRequestConvertible {
     
     var path: String {
         switch self {
-        case .search(let query):
-            return "/search/repositories?q=\(query)"
+        case .search:
+            return "/search/repositories"
 //        default:
 //            return "/"
         }
     }
     
+    var queryItems: [URLQueryItem] {
+        switch self {
+        case .search(let query):
+            return query.isEmpty ? [] : [URLQueryItem(name: "q", value: query)]
+        }
+    }
+    
     func asURLRequest() throws -> URLRequest {
-        let url = URL(string: Router.baseURL)!
+        var urlComponent = URLComponents(string: Router.baseURL)!
+        urlComponent.queryItems = queryItems
+        let url = try urlComponent.asURL()
         var urlRequest = URLRequest(url: url.appendingPathComponent(path))
         urlRequest.httpMethod = method.rawValue
-        switch self {
-        default:
-            return urlRequest
-        }
+        print(urlRequest.url?.absoluteURL)
+        return urlRequest
     }
 }

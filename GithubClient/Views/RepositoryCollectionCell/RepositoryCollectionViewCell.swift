@@ -29,7 +29,7 @@ class RepositoryCollectionViewCell: UICollectionViewCell {
         repositoryLabel.text = repository.repositoryName
         descriptionLabel.text = repository.description
         languageLabel.text = repository.language
-        starNumLabel.text = repository.starNum
+        starNumLabel.text = repository.starNum.description
     }
     
 }
