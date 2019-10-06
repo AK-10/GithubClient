@@ -16,12 +16,16 @@ class RepositorySearchViewModel {
     private let model: ModelProtocol = RepositoryModel()
     private let disposeBag = DisposeBag()
     
-    init(searchWordObservable: Observable<String?>, model: ModelProtocol) {
+    init(searchWordObservable: Observable<String?>) {
+        searchAction(searchWordObservable: searchWordObservable)
+    }
+    
+    private func searchAction(searchWordObservable: Observable<String?>) {
         searchWordObservable.subscribe { [weak self] event in
             switch event {
             case .next(let word):
                 guard let query = word else { return }
-                _ = model.search(query: query).subscribe{ [weak self] event in
+                _ = self?.model.search(query: query).subscribe{ [weak self] event in
                     switch event {
                     case .success(let repositories):
                         self?.resultRepositories.accept(repositories)
@@ -32,7 +36,8 @@ class RepositorySearchViewModel {
             default:
                 break
             }
-        }
+        }.disposed(by: disposeBag)
+        
     }
     
 }
