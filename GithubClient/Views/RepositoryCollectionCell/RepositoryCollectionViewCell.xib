@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -20,7 +18,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UserName/RepositoryName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="cpc-ds-6FY">
-                        <rect key="frame" x="20" y="32" width="257" height="24"/>
+                        <rect key="frame" x="20" y="32" width="480" height="24"/>
                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -80,6 +78,7 @@
                 <constraint firstItem="V8Y-8e-lp5" firstAttribute="leading" secondItem="hem-09-g2U" secondAttribute="leading" constant="20" id="mnp-E8-HzG"/>
                 <constraint firstAttribute="bottom" secondItem="V8Y-8e-lp5" secondAttribute="bottom" constant="24" id="nO2-TR-WTd"/>
                 <constraint firstItem="5Yc-I3-ISj" firstAttribute="leading" secondItem="eCO-xl-QQe" secondAttribute="trailing" constant="8" id="pEl-2f-t2d"/>
+                <constraint firstAttribute="trailing" secondItem="cpc-ds-6FY" secondAttribute="trailing" constant="20" id="zNU-Kz-y0B"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="cpb-Tx-myY"/>
             <size key="customSize" width="520" height="221"/>
