@@ -22,18 +22,20 @@ class RepositorySearchViewController: UIViewController {
         super.viewDidLoad()
         
         setupUI()
+        searchBar.rx.cancelButtonClicked
         
         repositoryCollectionView.register(UINib(nibName: "RepositoryCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "RepoCell")
         
-        viewModel.resultRepositories.bind(to: repositoryCollectionView.rx.items(cellIdentifier: "RepoCell", cellType: RepositoryCollectionViewCell.self)) { row, element, cell in
+        viewModel.resultRepositories.asDriver().drive(
+        repositoryCollectionView.rx.items(cellIdentifier: "RepoCell", cellType: RepositoryCollectionViewCell.self)) { row, element, cell in
             cell.setup(repository: element)
-        }
-        .disposed(by: disposeBag)
+        }.disposed(by: disposeBag)
         
         repositoryCollectionView.rx.modelSelected(Repository.self).subscribe(onNext: { [weak self] repository in
             let safariViewController = SFSafariViewController(url: repository.url)
             self?.present(safariViewController, animated: true)
         }).disposed(by: disposeBag)
+        
     }
     
     private func setupUI() {
