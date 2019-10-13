@@ -22,7 +22,6 @@ class RepositorySearchViewController: UIViewController {
         super.viewDidLoad()
         
         setupUI()
-        searchBar.rx.cancelButtonClicked
         
         repositoryCollectionView.register(UINib(nibName: "RepositoryCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "RepoCell")
         
