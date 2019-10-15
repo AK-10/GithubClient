@@ -10,34 +10,50 @@ import Foundation
 import RxSwift
 import RxRelay
 
-class RepositorySearchViewModel {
-    let resultRepositories = BehaviorRelay<[Repository]>(value: [])
-    
+struct RepositorySearchViewModel {
+        
     private let model: ModelProtocol = RepositoryModel()
     private let disposeBag = DisposeBag()
-    
-    init(searchWordObservable: Observable<String?>) {
-        searchAction(searchWordObservable: searchWordObservable)
+
+    // input
+    var query = BehaviorRelay<String?>(value: "")
+    // output
+    var resultRepositories: Observable<[Repository]> {
+        return query.flatMap{ str -> Observable<Observable<[Repository]>> in
+            
+        }
     }
     
-    private func searchAction(searchWordObservable: Observable<String?>) {
-        searchWordObservable.subscribe { [weak self] event in
-            switch event {
-            case .next(let word):
-                guard let query = word else { return }
-                _ = self?.model.search(query: query).subscribe{ [weak self] event in
-                    switch event {
-                    case .success(let repositories):
-                        self?.resultRepositories.accept(repositories)
-                    case .error(let error):
-                        print(error)
-                    }
-                }
-            default:
-                break
-            }
-        }.disposed(by: disposeBag)
+//    init() {
+//        query.subscribe { event in
+//            switch event {
+//            case .next(let text):
+//                guard let q = text else { return }
+//                self.model.search(query: q)
+//            default:
+//                break
+//            }
+//        }.disposed(by: disposeBag)
+//    }
+//
+//    private func searchAction(searchWordObservable: Observable<String?>) {
+//        searchWordObservable.subscribe { [weak self] event in
+//            switch event {
+//            case .next(let word):
+//                guard let query = word else { return }
+//                _ = self?.model.search(query: query).subscribe{ [weak self] event in
+//                    switch event {
+//                    case .success(let repositories):
+//                        self?.resultRepositories.accept(repositories)
+//                    case .error(let error):
+//                        print(error)
+//                    }
+//                }
+//            default:
+//                break
+//            }
+//        }.disposed(by: disposeBag)
         
-    }
+//    }
     
 }

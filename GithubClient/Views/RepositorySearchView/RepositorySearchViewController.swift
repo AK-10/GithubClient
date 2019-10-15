@@ -15,17 +15,24 @@ class RepositorySearchViewController: UIViewController {
     
     @IBOutlet private weak var searchBar: UISearchBar!
     @IBOutlet weak var repositoryCollectionView: UICollectionView!
-    private lazy var viewModel = RepositorySearchViewModel(searchWordObservable: searchBar.rx.text.asObservable())
+    private lazy var viewModel = RepositorySearchViewModel()
     private let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupUI()
+        bind()
         
+    }
+    
+    private func bind() {
         repositoryCollectionView.register(UINib(nibName: "RepositoryCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "RepoCell")
         
-        viewModel.resultRepositories.asDriver().drive(
+        searchBar.rx.text.asObservable().bind(to: viewModel.query).disposed(by: disposeBag)
+        
+        
+        viewModel.resultRepositories.asDriver(onErrorJustReturn: []).drive(
         repositoryCollectionView.rx.items(cellIdentifier: "RepoCell", cellType: RepositoryCollectionViewCell.self)) { row, element, cell in
             cell.setup(repository: element)
         }.disposed(by: disposeBag)
@@ -34,7 +41,6 @@ class RepositorySearchViewController: UIViewController {
             let safariViewController = SFSafariViewController(url: repository.url)
             self?.present(safariViewController, animated: true)
         }).disposed(by: disposeBag)
-        
     }
     
     private func setupUI() {
