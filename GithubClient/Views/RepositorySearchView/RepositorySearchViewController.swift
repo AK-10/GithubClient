@@ -29,15 +29,13 @@ class RepositorySearchViewController: UIViewController {
     private func bind() {
         repositoryCollectionView.register(UINib(nibName: "RepositoryCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "RepoCell")
         
-        searchBar.rx.text.asObservable().bind(to: viewModel.query).disposed(by: disposeBag)
+        searchBar.rx.text.asObservable().bind(to: viewModel.searchText).disposed(by: disposeBag)
         
-        
-        viewModel.resultRepositories.asDriver(onErrorJustReturn: []).drive(
-        repositoryCollectionView.rx.items(cellIdentifier: "RepoCell", cellType: RepositoryCollectionViewCell.self)) { row, element, cell in
+        viewModel.repositories.bind(to: repositoryCollectionView.rx.items(cellIdentifier: "RepoCell", cellType: RepositoryCollectionViewCell.self)) { _, element, cell in
             cell.setup(repository: element)
         }.disposed(by: disposeBag)
-        
-        repositoryCollectionView.rx.modelSelected(Repository.self).subscribe(onNext: { [weak self] repository in
+       
+    repositoryCollectionView.rx.modelSelected(Repository.self).subscribe(onNext: { [weak self] repository in
             let safariViewController = SFSafariViewController(url: repository.url)
             self?.present(safariViewController, animated: true)
         }).disposed(by: disposeBag)
