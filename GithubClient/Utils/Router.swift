@@ -46,7 +46,6 @@ enum Router: URLRequestConvertible {
         let url = try urlComponent.asURL()
         var urlRequest = URLRequest(url: url.appendingPathComponent(path))
         urlRequest.httpMethod = method.rawValue
-        print(urlRequest.url?.absoluteURL)
         return urlRequest
     }
 }

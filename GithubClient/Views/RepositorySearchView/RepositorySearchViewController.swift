@@ -9,24 +9,36 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import SafariServices
 
 class RepositorySearchViewController: UIViewController {
-
+    
     @IBOutlet private weak var searchBar: UISearchBar!
     @IBOutlet weak var repositoryCollectionView: UICollectionView!
-    private lazy var viewModel = RepositorySearchViewModel(searchWordObservable: searchBar.rx.text.asObservable(), model: RepositoryModel())
+    private lazy var viewModel = RepositorySearchViewModel()
     private let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupUI()
+        bind()
         
+    }
+    
+    private func bind() {
         repositoryCollectionView.register(UINib(nibName: "RepositoryCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "RepoCell")
-        viewModel.resultRepositories.asObservable().bind(to: repositoryCollectionView.rx.items(cellIdentifier: "RepoCell", cellType: RepositoryCollectionViewCell.self)) { row, element, cell in
+        
+        searchBar.rx.text.asObservable().bind(to: viewModel.searchText).disposed(by: disposeBag)
+        
+        viewModel.repositories.bind(to: repositoryCollectionView.rx.items(cellIdentifier: "RepoCell", cellType: RepositoryCollectionViewCell.self)) { _, element, cell in
             cell.setup(repository: element)
-        }
-        .disposed(by: disposeBag)
+        }.disposed(by: disposeBag)
+       
+    repositoryCollectionView.rx.modelSelected(Repository.self).subscribe(onNext: { [weak self] repository in
+            let safariViewController = SFSafariViewController(url: repository.url)
+            self?.present(safariViewController, animated: true)
+        }).disposed(by: disposeBag)
     }
     
     private func setupUI() {
