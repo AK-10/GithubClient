@@ -36,9 +36,15 @@ class RepositorySearchViewController: UIViewController {
         }.disposed(by: disposeBag)
        
         
-        repositoryCollectionView.rx.itemSelected
-            .bind(to: viewModel.itemSelected)
+        repositoryCollectionView.rx.modelSelected(Repository.self)
+            .bind(to: viewModel.modelSelected)
             .disposed(by: disposeBag)
+        
+//        repositoryCollectionView.rx.itemSelected
+//            .bind(to: viewModel.itemSelected)
+//            .disposed(by: disposeBag)
+        
+        
         
         viewModel.openURL.bind(to: Binder(self) { me, url in
             let safariVC = SFSafariViewController(url: url)

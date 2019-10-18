@@ -14,7 +14,7 @@ class RepositorySearchViewModel {
     
     // input
     let searchText: AnyObserver<String?>
-    let itemSelected: AnyObserver<IndexPath>
+    let modelSelected: AnyObserver<Repository>
     
     // output
     let repositories: Observable<[Repository]>
@@ -32,10 +32,10 @@ class RepositorySearchViewModel {
         }
         
         // input itemSelectedの初期化
-        let _itemSelected = PublishRelay<IndexPath>()
-        self.itemSelected = AnyObserver<IndexPath> { event in
-            guard let indexPath = event.element else { return }
-            _itemSelected.accept(indexPath)
+        let _modelSelected = PublishRelay<Repository>()
+        self.modelSelected = AnyObserver<Repository> { event in
+            guard let model = event.element else { return }
+            _modelSelected.accept(model)
         }
         
         let _searchWithText = _searchText.flatMap { text -> Observable<String> in
@@ -68,11 +68,9 @@ class RepositorySearchViewModel {
             
         }
         
-        _itemSelected
-            .withLatestFrom(_resultRepositories) { ($0.row, $1) }
-            .flatMap { index, repos -> Observable<URL> in
-                guard index < repos.count else { return .empty() }
-                return .just(repos[index].url)
+        _modelSelected
+            .flatMap { repository -> Observable<URL> in
+            return .just(repository.url)
         }.bind(to: _openURL)
             .disposed(by: disposeBag)
         
