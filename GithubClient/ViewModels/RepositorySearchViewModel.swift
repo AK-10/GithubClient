@@ -14,10 +14,11 @@ class RepositorySearchViewModel {
     
     // input
     let searchText: AnyObserver<String?>
-//    let itemSelected: AnyObserver<IndexPath>
+    let itemSelected: AnyObserver<IndexPath>
     
     // output
     let repositories: Observable<[Repository]>
+    let openURL: Observable<URL>
     
     //    private let model: ModelProtocol
     private let disposeBag = DisposeBag()
@@ -30,6 +31,13 @@ class RepositorySearchViewModel {
             _searchText.accept(text)
         }
         
+        // input itemSelectedの初期化
+        let _itemSelected = PublishRelay<IndexPath>()
+        self.itemSelected = AnyObserver<IndexPath> { event in
+            guard let indexPath = event.element else { return }
+            _itemSelected.accept(indexPath)
+        }
+        
         let _searchWithText = _searchText.flatMap { text -> Observable<String> in
             guard let text = text, text.count >= 1 else {
                 return .empty()
@@ -37,8 +45,13 @@ class RepositorySearchViewModel {
             return .just(text)
         }.share()
         
+        // output resultRepositoriesの初期化
         let _resultRepositories = BehaviorRelay<[Repository]>(value: [])
         self.repositories = _resultRepositories.asObservable()
+        
+        // output openURLの初期化
+        let _openURL = PublishRelay<URL>()
+        self.openURL = _openURL.asObservable()
         
         // API Request
         do {
@@ -55,6 +68,13 @@ class RepositorySearchViewModel {
             
         }
         
+        _itemSelected
+            .withLatestFrom(_resultRepositories) { ($0.row, $1) }
+            .flatMap { index, repos -> Observable<URL> in
+                guard index < repos.count else { return .empty() }
+                return .just(repos[index].url)
+        }.bind(to: _openURL)
+            .disposed(by: disposeBag)
         
         //        query.subscribe { [weak self] event in
         //            switch event {
@@ -74,26 +94,3 @@ class RepositorySearchViewModel {
         //        }.disposed(by: disposeBag)
     }
 }
-
-//
-//    private func searchAction(searchWordObservable: Observable<String?>) {
-//        searchWordObservable.subscribe { [weak self] event in
-//            switch event {
-//            case .next(let word):
-//                guard let query = word else { return }
-//                _ = self?.model.search(query: query).subscribe{ [weak self] event in
-//                    switch event {
-//                    case .success(let repositories):
-//                        self?.resultRepositories.accept(repositories)
-//                    case .error(let error):
-//                        print(error)
-//                    }
-//                }
-//            default:
-//                break
-//            }
-//        }.disposed(by: disposeBag)
-
-//    }
-
-//}
