@@ -16,8 +16,6 @@ class RepositoryModel: ModelProtocol {
     func search(query: String) -> Single<[Repository]> {
         return Single<[Repository]>.create { singleEvent in
             let request = AF.request(Router.search(query: query)).responseJSON(completionHandler: { (res) in
-                print(query)
-                print("result: \(res.result)")
                 switch res.result {
                 case .success:
                     print(res.debugDescription)

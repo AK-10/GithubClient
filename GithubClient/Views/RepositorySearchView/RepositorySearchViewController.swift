@@ -35,10 +35,21 @@ class RepositorySearchViewController: UIViewController {
             cell.setup(repository: element)
         }.disposed(by: disposeBag)
        
-    repositoryCollectionView.rx.modelSelected(Repository.self).subscribe(onNext: { [weak self] repository in
-            let safariViewController = SFSafariViewController(url: repository.url)
-            self?.present(safariViewController, animated: true)
-        }).disposed(by: disposeBag)
+        
+        repositoryCollectionView.rx.modelSelected(Repository.self)
+            .bind(to: viewModel.modelSelected)
+            .disposed(by: disposeBag)
+        
+//        repositoryCollectionView.rx.itemSelected
+//            .bind(to: viewModel.itemSelected)
+//            .disposed(by: disposeBag)
+        
+        
+        
+        viewModel.openURL.bind(to: Binder(self) { me, url in
+            let safariVC = SFSafariViewController(url: url)
+            me.present(safariVC, animated: true)
+            }).disposed(by: disposeBag)
     }
     
     private func setupUI() {
