@@ -1,2 +1,3 @@
 github "Alamofire/Alamofire" "5.0.0.beta.1"
 github "ReactiveX/RxSwift" "5.0.1"
+github "ranesr/SwiftIcons" "b9a9883040a58bc7877bc33e8e9176c6bcc25a3b"

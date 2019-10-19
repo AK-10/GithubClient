@@ -12,6 +12,8 @@
 		111F50E62338B30D00A45195 /* ModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 111F50E52338B30D00A45195 /* ModelProtocol.swift */; };
 		111F50E82338BA6200A45195 /* RxRelay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 111F50E72338BA6200A45195 /* RxRelay.framework */; };
 		111F50EA2338BAF900A45195 /* RepositoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 111F50E92338BAF900A45195 /* RepositoryModel.swift */; };
+		11A8BF36235B5050000EF612 /* SwiftIcons.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11A8BF35235B504F000EF612 /* SwiftIcons.framework */; };
+		11A8BF37235B5050000EF612 /* SwiftIcons.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 11A8BF35235B504F000EF612 /* SwiftIcons.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		11BD548D233E994B0022E0DA /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BD548C233E994B0022E0DA /* Router.swift */; };
 		11BD548F233E99820022E0DA /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11BD548E233E99820022E0DA /* Alamofire.framework */; };
 		11D3FB5123369DFF004145F5 /* RepositoryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11D3FB5023369DFF004145F5 /* RepositoryCollectionViewCell.xib */; };
@@ -46,12 +48,27 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		11A8BF38235B5050000EF612 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				11A8BF37235B5050000EF612 /* SwiftIcons.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		111F50E02338B16200A45195 /* RepositorySearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositorySearchViewModel.swift; sourceTree = "<group>"; };
 		111F50E32338B1F500A45195 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		111F50E52338B30D00A45195 /* ModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelProtocol.swift; sourceTree = "<group>"; };
 		111F50E72338BA6200A45195 /* RxRelay.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxRelay.framework; path = Carthage/Build/iOS/RxRelay.framework; sourceTree = "<group>"; };
 		111F50E92338BAF900A45195 /* RepositoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryModel.swift; sourceTree = "<group>"; };
+		11A8BF35235B504F000EF612 /* SwiftIcons.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftIcons.framework; path = Carthage/Build/iOS/SwiftIcons.framework; sourceTree = "<group>"; };
 		11BD548C233E994B0022E0DA /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		11BD548E233E99820022E0DA /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		11D3FB5023369DFF004145F5 /* RepositoryCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RepositoryCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -84,6 +101,7 @@
 				111F50E82338BA6200A45195 /* RxRelay.framework in Frameworks */,
 				11FDD9A323369A8800F29842 /* RxCocoa.framework in Frameworks */,
 				11FDD9A02336995C00F29842 /* RxSwift.framework in Frameworks */,
+				11A8BF36235B5050000EF612 /* SwiftIcons.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -248,6 +266,7 @@
 		11FDD99E2336995B00F29842 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				11A8BF35235B504F000EF612 /* SwiftIcons.framework */,
 				11BD548E233E99820022E0DA /* Alamofire.framework */,
 				111F50E72338BA6200A45195 /* RxRelay.framework */,
 				11FDD9A223369A8800F29842 /* RxCocoa.framework */,
@@ -267,6 +286,7 @@
 				11FDD9672336983300F29842 /* Frameworks */,
 				11FDD9682336983300F29842 /* Resources */,
 				11FDD9A1233699FF00F29842 /* ShellScript */,
+				11A8BF38235B5050000EF612 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
